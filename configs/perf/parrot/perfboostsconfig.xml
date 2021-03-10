@@ -211,7 +211,7 @@
 
         <Config
             Id="0x00001080" Type="1" Enable="true" Fps="120" Target="parrot"
-            Resources="0x40800000, 1900, 0x40800100, 1497,
+            Resources="0x40800000, 1900, 0x40800100, 1651,
                        0x40C00000, 2, 0x40C74000, 0xF0, 0x40408000, 0x27, 0x41000000, 3,
                        0x40C78000, 0, 0x40C7C000, 0" />
 
@@ -233,7 +233,7 @@
 
         <Config
             Id="0x00001080" Type="1" Enable="true" Fps="144" Target="parrot"
-            Resources="0x40800000, 1900, 0x40800100, 1497,
+            Resources="0x40800000, 1900, 0x40800100, 1651,
                        0x40C00000, 2, 0x40C74000, 0xF0, 0x40408000, 0x27, 0x41000000, 3,
                        0x40C78000, 0, 0x40C7C000, 0, 0x43480000, 0xAAE60" />
 
@@ -508,7 +508,7 @@
 
         <Config
             Id="0x00001090" Enable="true" Timeout="1000"
-            Resources="0x40800100, 1324, 0x42804000, 0" />
+            Resources="0x40800100, 1497, 0x42804000, 0" />
 
     <!--Display on Resource -->
         <!-- Display on resource opcode, value -->
