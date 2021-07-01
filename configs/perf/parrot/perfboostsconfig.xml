@@ -21,12 +21,13 @@
         <!-- CPUBOOST_MAX_FREQ LITTLE Core resource opcode, value-->
         <!-- CPUBOOST_MIN_FREQ BIG Core resource opcode, value-->
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value-->
+        <!-- GPU MIN_FREQUENCY resource opcode, value-->
 
         <!-- Type="1", main launch of 2sec -->
         <Config
            Id="0x00001081" Type="1" Enable="true" Timeout="3000" Target="parrot"
            Resources="0x40C00000, 0x1, 0x40804000, 0xFFFF, 0x40804100, 0xFFFF,
-                      0x40800000, 2400, 0x40800100, 1804" />
+                      0x40800000, 2400, 0x40800100, 1804, 0x4280C000, 875" />
         <Config
            Id="0x00001081" Type="1" Enable="true" Timeout="2000" Target="ravelin,montague,montaguep"
            Resources="0x40C00000, 0x1, 0x40804000, 0xFFFF, 0x40804100, 0xFFFF,
@@ -153,11 +154,12 @@
         <!-- CPUBOOST_MAX_FREQ LITTLE Core resource opcode, value-->
         <!-- CPUBOOST_MIN_FREQ BIG Core resource opcode, value-->
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value-->
+        <!-- GPU MIN_FREQUENCY resource opcode, value-->
         <Config
             Id="0x00001083" Enable="true" Timeout="400"
             Resources="0x40804000, 0xFFFF, 0x40804100, 0xFFFF,
-                       0x42804000, 0x6,
-                       0x40800000, 0xFFFF, 0x40800100, 0xFFFF" />
+                       0x40800000, 0xFFFF, 0x40800100, 0xFFFF,
+                       0x4280C000, 734" />
 
     <!-- Expensive rendering hint -->
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode,value -->
@@ -316,7 +318,7 @@
 
         <Config
             Id="0x00001080" Type="4" Enable="true" Timeout="80" Target="parrot"
-            Resources="0x40C00000, 2, 0x42804000, 0, 0x42C20000, 1,
+            Resources="0x40C00000, 2, 0x4280C000, 650, 0x42C20000, 1,
                        0x4080C000, 1344000, 0x4080C100, 1324800,
                        0x40808000, 960000, 0x40808100, 940800" />
 
@@ -339,7 +341,7 @@
         <Config
             Id="0x00001080" Type="4" Enable="true" Timeout="115" Fps="90" Target="parrot"
             Resources="0x40C00000, 2, 0x40C74000, 0xF0, 0x40408000, 0x27,
-                       0x42804000, 0, 0x42C20000, 1,
+                       0x4280C000, 650, 0x42C20000, 1,
                        0x4080C000, 1497600, 0x4080C100, 1497600,
                        0x40808000, 1190400, 0x40808100, 1113600" />
 
@@ -366,7 +368,7 @@
         <Config
             Id="0x00001080" Type="4" Enable="true" Timeout="115" Fps="120" Target="parrot"
             Resources="0x40C00000, 2, 0x40C74000, 0xF0, 0x40408000, 0x27, 0x41000000, 3,
-                       0x40C78000, 0, 0x40C7C000, 0, 0x42C20000, 1,
+                       0x40C78000, 0, 0x40C7C000, 0, 0x42C20000, 1, 0x4280C000, 650,
                        0x4080C000, 1651200, 0x4080C100, 1651200,
                        0x40808000, 1344000, 0x40808100, 1324800" />
 
@@ -395,6 +397,7 @@
             Id="0x00001080" Type="4" Enable="true" Timeout="115" Fps="144" Target="parrot"
             Resources="0x40C00000, 2, 0x40C74000, 0xF0, 0x40408000, 0x27, 0x41000000, 3,
                        0x40C78000, 0, 0x40C7C000, 0, 0x43480000, 0xAAE60, 0x42C20000, 1,
+                       0x4280C000, 650,
                        0x4080C000, 1900800, 0x4080C100, 1804800,
                        0x40808000, 1497600, 0x40808100, 1497600" />
 
