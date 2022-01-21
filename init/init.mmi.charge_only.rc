@@ -1,18 +1,3 @@
-on init
-    setprop vendor.usb.adb_early ${ro.boot.adb_early:-"0"}
-
-on charger
-    setprop vendor.usb.charging.func.name fastboot
-
-# Wait for the USB init shell script to finish, to prevent enumeration issues
-on property:init.svc.vendor.mmi-usb-sh=stopped && property:ro.boot.mode=charger && property:vendor.usb.adb_early=0
-    setprop sys.usb.configfs 1
-    setprop sys.usb.config fastboot
-
-on property:init.svc.vendor.mmi-usb-sh=stopped && property:ro.boot.mode=charger && property:vendor.usb.adb_early=1
-    setprop sys.usb.configfs 1
-    setprop sys.usb.config adb
-
 on late-fs-charger
     class_start early_hal
     mount_all --late
@@ -33,12 +18,6 @@ on moto-charger
     stop qseecom-service
     stop hwservicemanager
     stop vendor.sensors
-    trigger firmware_mounts_complete
-    wait /sys/class/power_supply/battery
-    wait /sys/class/power_supply/usb
-    write /sys/devices/platform/soc/soc:mmi,charger/state_sync 1
-    wait /sys/class/udc/${sys.usb.controller} 20
-    start vendor.charge_only_mode
     start vendor.thermal-com
     start system_suspend
 
@@ -62,12 +41,6 @@ on moto-charger
 
 on tks-charger && property:persist.sys.tksautoboot=1
     setprop sys.powerctl "reboot,tks-charger"
-
-service vendor.charge_only_mode /vendor/bin/charge_only_mode
-    user root
-    group graphics system input
-    capabilities SYS_BOOT
-    disabled
 
 service vendor.thermal-com /vendor/bin/thermal-engine-v2 --minimode
     class main
