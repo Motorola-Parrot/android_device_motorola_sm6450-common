@@ -82,6 +82,7 @@ on early-init
     setprop ro.vendor.boot.serialno ${ro.boot.serialno}
     setprop ro.vendor.boot.nal_id ${ro.boot.nal_id}
     setprop ro.vendor.zygote ${ro.zygote}
+    setprop persist.radio.multisim.config ${persist.vendor.radio.multisim.config}
 
     # Make sure ro.boot.product.hardware.sku is set before hwservicemanager startup.
     setprop ro.boot.product.hardware.sku ${ro.vendor.product.hardware.sku.variant}
@@ -497,13 +498,6 @@ service vendor.mmi-shutdown-sh /vendor/bin/init.mmi.shutdown.sh
     user root
     oneshot
     disabled
-
-# translate MMI property in order to keep the consistent with QCOM
-on property:ro.vendor.hw.dualsim=true
-   setprop persist.radio.multisim.config dsds
-
-on property:ro.vendor.hw.dualsim=false
-   setprop persist.radio.multisim.config ""
 
 on property:sys.sysctl.swappiness=*
     write /proc/sys/vm/swappiness ${sys.sysctl.swappiness}
