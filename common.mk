@@ -311,6 +311,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     DeviceAsWebcamResCommon \
     FrameworksOverlay \
+    LineageApertureAppOverlay \
     LineageSdkOverlay \
     SettingsOverlay \
     SystemUIOverlay \
