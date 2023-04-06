@@ -47,3 +47,6 @@ on fs
     mount ext4 /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /vendor/firmware_mnt ro nosuid nodev context=u:object_r:firmware_file:s0
     wait /sys/kernel/boot_adsp/boot    
     write /sys/kernel/boot_adsp/boot 1
+
+on property:init.svc.fastbootd=running
+    umount /vendor/firmware_mnt
