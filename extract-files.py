@@ -60,6 +60,11 @@ blob_fixups: blob_fixups_user_type = {
     ),
     'system_ext/priv-app/ims/ims.apk': blob_fixup()
         .apktool_patch('ims-patches'),
+    'vendor/etc/izat.conf': blob_fixup()
+        .regex_replace(
+            r'(PROCESS_NAME=slim_daemon\nPROCESS_ARGUMENT=\nPROCESS_STATE=)ENABLED',
+            r'\1DISABLED',
+        ),
     'vendor/etc/sensors/hals.conf': blob_fixup()
         .add_line_if_missing('sensors.moto_ext.so'),
     (
