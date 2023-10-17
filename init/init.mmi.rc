@@ -204,22 +204,6 @@ on boot
    chown system system /sys/class/capsense/reset
    chown system system /sys/class/capsense/int_state
 
-on charger
-    trigger early-fs
-    trigger fs
-    trigger post-fs
-    trigger late-fs
-    trigger post-fs-data
-    trigger moto-charger
-    trigger tks-charger
-
-on moto-charger
-    class_stop main
-    class_stop late_start
-
-on tks-charger && property:persist.sys.tksautoboot=1
-    setprop sys.powerctl "reboot,tks-charger"
-
 on property:sys.boot_completed=1 && property:ro.vendor.zram.product_swapon=""
     write /proc/sys/vm/page-cluster 0
     swapon_all /vendor/etc/fstab.qcom
@@ -298,11 +282,6 @@ on property:vendor.hw.touch.status="dead"
 
 on property:vendor.hw.touch.status="ready"
     start vendor.touch-ready-sh
-
-service vendor.charge_only_mode /vendor/bin/charge_only_mode
-    user root
-    group graphics system input log
-    disabled
 
 # IKSWQ-149109: Force shutter tone on Japan softbank carrier
 on property:ro.carrier=softbank
