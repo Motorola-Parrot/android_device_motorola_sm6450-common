@@ -77,7 +77,6 @@ on post-fs
     mkdir /mnt/vendor/persist/camera/ledcal 0775 camera vendor_tcmd
     mkdir /mnt/vendor/persist/camera/mot_ledcal 0775 camera camera
     mkdir /mnt/vendor/persist/camera/mot_gyrocal 0775 camera camera
-    mkdir /mnt/vendor/persist/batt_health 0775 vendor_pwric vendor_pwric
     mkdir /mnt/vendor/persist/mdm 0770 radio radio
     mkdir /mnt/vendor/persist/factory 0755 vendor_tcmd vendor_tcmd
     mkdir /mnt/vendor/persist/factory/audio 0775 vendor_tcmd audio
@@ -220,25 +219,6 @@ on moto-charger
 
 on tks-charger && property:persist.sys.tksautoboot=1
     setprop sys.powerctl "reboot,tks-charger"
-
-service vendor.batt_health /vendor/bin/batt_health
-    class late_start
-    user vendor_pwric
-    group vendor_pwric cache net_admin log system
-    disabled
-
-on property:sys.boot_completed=1
-    # Change batt_info sys node permission for batt_health
-    chown root system /proc/config/batt_firstusagedate
-    wait /sys/class/power_supply/battery/manufacturing_date 0.3
-    chown system system /sys/class/power_supply/battery/manufacturing_date
-    chmod 0664 /sys/class/power_supply/battery/manufacturing_date
-    chown system system /sys/class/power_supply/battery/first_usage_date
-    chmod 0664 /sys/class/power_supply/battery/first_usage_date
-    chown system system /sys/class/power_supply/battery/cycle_count
-    chmod 0664 /sys/class/power_supply/battery/cycle_count
-    chmod 0664 /sys/class/power_supply/battery/charge_control_limit
-    start vendor.batt_health
 
 on property:sys.boot_completed=1 && property:ro.vendor.zram.product_swapon=""
     write /proc/sys/vm/page-cluster 0
