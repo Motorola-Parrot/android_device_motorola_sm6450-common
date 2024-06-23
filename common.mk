@@ -168,5 +168,17 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml
 
+# WiFi firmware symlinks
+TARGET_WIFI_VARIANTS ?= adrastea qca6750
+
+PRODUCT_PACKAGES += \
+     firmware_wlanmdsp.otaupdate_symlink
+
+$(foreach variant,$(TARGET_WIFI_VARIANTS), \
+    $(eval PRODUCT_PACKAGES += \
+        firmware_$(variant)_wlan_mac.bin_symlink \
+        firmware_$(variant)_WCNSS_qcom_cfg.ini_symlink) \
+)
+
 # Inherit from the proprietary files makefile.
 $(call inherit-product, vendor/motorola/sm6450-common/sm6450-common-vendor.mk)
