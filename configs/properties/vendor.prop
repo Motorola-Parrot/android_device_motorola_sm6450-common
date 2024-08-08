@@ -243,6 +243,10 @@ vendor.gralloc.disable_ubwc=0
 persist.vendor.lte.pco_supported=true
 persist.vendor.rcs.singlereg.feature=1
 
+# HWUI
+debug.hwui.use_hint_manager=true
+debug.hwui.target_cpu_time_percent=30
+
 # Incremental FS
 ro.incremental.enable=yes
 
