@@ -32,5 +32,14 @@ bluetooth.profile.pbap.server.enabled=true
 # e-SIM
 masterclear.allow_retain_esim_profiles_after_fdr=true
 
+# LMK
+ro.lmk.kill_heaviest_task=true
+ro.lmk.swap_free_low_percentage=10
+ro.lmk.swap_util_max=90
+ro.lmk.thrashing_limit=50
+ro.lmk.thrashing_limit_decay=25
+ro.lmk.psi_complete_stall_ms=250
+ro.lmk.psi_partial_stall_ms=50
+
 # Media
 media.stagefright.audio.deep=false
