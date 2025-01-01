@@ -41,6 +41,7 @@ libs_add_vendor_suffix = (
     "vendor.qti.qccvndhal_aidl-V1-ndk",
 )
 
+
 def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
     if partition != "vendor":
         return None
@@ -74,6 +75,14 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
         .add_needed('libcodec2_shim.so'),
+    (
+        'vendor/bin/qguard',
+        'vendor/lib64/libqcodec2_utils.so',
+        'vendor/lib64/liboemcrypto.so',
+        'vendor/lib64/libops.so',
+    ): blob_fixup()
+        .replace_needed('vendor.qti.hardware.display.config-V5-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so')
+        .replace_needed('vendor.qti.hardware.display.config-V7-ndk.so', 'vendor.qti.hardware.display.config-V12-ndk.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
