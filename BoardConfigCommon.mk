@@ -5,5 +5,19 @@
 
 COMMON_PATH := device/motorola/sm6450-common
 
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-2a-dotprod
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := kryo300
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := $(PRODUCT_DEVICE)
+
+# Platform
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_BOARD_PLATFORM := parrot
+
 # Include the proprietary files BoardConfig.
 include vendor/motorola/sm6450-common/BoardConfigVendor.mk
