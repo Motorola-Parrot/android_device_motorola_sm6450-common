@@ -105,5 +105,8 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_F2FS := true
 
+# SELinux
+include device/qcom/sepolicy_vndr/SEPolicy.mk
+
 # Include the proprietary files BoardConfig.
 include vendor/motorola/sm6450-common/BoardConfigVendor.mk
