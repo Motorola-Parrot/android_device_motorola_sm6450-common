@@ -51,6 +51,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom.vendor_ramdisk
+    init.qcom.recovery.rc
 
 # Keymint
 PRODUCT_PACKAGES += \
