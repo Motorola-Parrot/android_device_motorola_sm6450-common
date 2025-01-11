@@ -59,8 +59,18 @@ PRODUCT_COPY_FILES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    fstab.qcom.vendor_ramdisk
-    init.qcom.recovery.rc
+    fstab.qcom.vendor_ramdisk \
+    init.qcom.recovery.rc \
+    init.class_main.sh \
+    init.qcom.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.rc \
+    init.qcom.recovery.rc \
+    init.qcom.usb.rc \
+    init.qcom.usb.sh \
+    init.target.rc \
+    ueventd.qcom.rc
 
 # Keymint
 PRODUCT_PACKAGES += \
