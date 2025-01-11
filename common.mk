@@ -84,6 +84,14 @@ PRODUCT_COPY_FILES += \
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+PRODUCT_PACKAGES += \
+    vendor_bt_firmware_mountpoint \
+    vendor_dsp_mountpoint \
+    vendor_firmware_mnt_mountpoint \
+    vendor_fsg_mountpoint \
+    vendor_super_fsg_mountpoint \
+    vendor_super_modem_mountpoint
+
 # Shipping API
 BOARD_SHIPPING_API_LEVEL := 34
 PRODUCT_SHIPPING_API_LEVEL := 34
