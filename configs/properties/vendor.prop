@@ -178,6 +178,8 @@ persist.vendor.qfp=true
 
 # FM
 ro.vendor.fm.use_audio_session=true
+vendor.hw.fm.init=0
+vendor.qcom.bluetooth.soc=cherokee
 
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp

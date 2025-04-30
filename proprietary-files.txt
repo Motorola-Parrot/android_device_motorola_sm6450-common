@@ -85,7 +85,6 @@ vendor/lib64/libbtnv.so|c002576d44dc559b688bf1d78c5bf627720b4875
 vendor/lib64/libsoc_helper.so|fe54074bf6d9e37cd2c8c076a43e74f09526ba8a
 vendor/lib64/vendor.qti.hardware.bluetooth_sar-V1-ndk.so|50c9ea0a88b168727957fb88e682c7a2afaed779
 vendor/lib64/vendor.qti.hardware.bttpi-V3-ndk.so|856786a9216b9679604906cbc3875dc2f0f64660
-vendor/lib64/vendor.qti.hardware.fm-V1-ndk.so|2f383fde083013a9597872d4cae9ac827b088cf8
 
 # Bluetooth (A2DP) - from pdx257 72.1.A.2.127
 vendor/lib64/hw/android.hardware.bluetooth.audio-impl-qti.so|f7493d5079e037f101e5b6499b0d039b71536394
@@ -98,10 +97,10 @@ vendor/lib64/libbluetooth_audio_session_qti_2_1.so|1c2e6518d0df6fbb4698cfe9bf7fc
 
 # CACert
 vendor/app/CACertService/CACertService.apk
-vendor/lib64/libcacertclient.so
-vendor/lib64/libjnihelper.so
 vendor/etc/sysconfig/cacert-oem-defined-uids.xml
 vendor/etc/vintf/manifest/cacert-saidl.xml
+vendor/lib64/libcacertclient.so
+vendor/lib64/libjnihelper.so
 vendor/lib64/vendor.qti.hardware.cacertaidlservice-V1-ndk.so
 
 # Camera (ICP)
@@ -137,8 +136,8 @@ vendor/etc/init/vendor.qti.cdsprpc-service.rc
 vendor/lib64/libcdsp_default_listener.so
 vendor/lib64/libcdsprpc.so
 vendor/lib64/libmdsprpc.so
-vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libsdsprpc.so
+vendor/lib64/libsysmon_cdsp_skel.so
 
 # Charger
 vendor/bin/charge_only_mode
@@ -739,15 +738,15 @@ vendor/lib64/libsmemlog.so
 
 # QESDK
 vendor/bin/qesdk-manager
+vendor/bin/snapdragon_services
 vendor/etc/init/qesdk-manager.rc
+vendor/etc/init/snapdragon_services.rc
 vendor/etc/seccomp_policy/qesdk.policy
 vendor/etc/vintf/manifest/qesdk-manager.xml
 vendor/lib64/libqesdk2_0.so
 vendor/lib64/libqesdk_manager.so
 vendor/lib64/libqesdoem_query_sys.so
 vendor/lib64/libqti-qesdk-secure.so
-vendor/etc/init/snapdragon_services.rc
-vendor/bin/snapdragon_services
 vendor/lib64/vendor.qti.qesdhal-impl.so
 vendor/lib64/vendor.qti.qesdhal@1.0.so
 vendor/lib64/vendor.qti.qesdhal@1.1.so
