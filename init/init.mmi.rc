@@ -142,9 +142,6 @@ on post-fs-data
     mkdir /data/vendor/dbvc 0750 vendor_tcmd shell
     chown drmrpc vendor_tcmd /mnt/vendor/persist/security
 
-    # Create directory used by power_supply_logger
-    mkdir /data/vendor/power_supply_logger 0770 vendor_pwric log
-
     # Setup folder for native to transfer data to NativeDropBoxAgent
     mkdir /data/vendor/dropbox-add 0730 log diag
 
