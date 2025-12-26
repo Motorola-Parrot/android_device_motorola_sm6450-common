@@ -58,6 +58,8 @@ blob_fixups: blob_fixups_user_type = {
     'system_ext/etc/permissions/moto-telephony.xml': blob_fixup().regex_replace(
         '/system/', '/system_ext/'
     ),
+    'vendor/etc/sensors/hals.conf': blob_fixup()
+        .add_line_if_missing('sensors.moto_ext.so'),
     (
         'vendor/bin/poweropt-service',
         'vendor/lib64/libaodoptfeature.so',

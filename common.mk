@@ -308,7 +308,8 @@ PRODUCT_SHIPPING_API_LEVEL := 34
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors-service.multihal \
-    sensors.dynamic_sensor_hal
+    sensors.dynamic_sensor_hal \
+    sensors.moto_ext
 
 $(foreach sku, parrot, \
     $(eval PRODUCT_COPY_FILES += \

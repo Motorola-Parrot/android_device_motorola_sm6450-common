@@ -658,3 +658,13 @@ subsystem mem_buf_vm
 /sys/class/fingerprint/fpc1020 hw_reset   0660 system system
 /sys/class/fingerprint/fpc1020 irq        0660 system system
 /sys/class/fingerprint/fpc1020 irq_cnt    0660 system system
+
+# Additional sensors
+/sys/class/touchscreen/*    double_tap_enabled                                                0664    system  system
+/sys/class/touchscreen/*    double_tap_pressed                                                0664    system  system
+/sys/class/touchscreen/*    udfps_enabled                                                     0664    system  system
+/sys/class/touchscreen/*    udfps_pressed                                                     0664    system  system
+/sys/devices/platform/soc/*/*.spi/spi_master/spi0/spi0.*/touchscreen/*    double_tap_enabled    0664    system    system
+/sys/devices/platform/soc/*/*.spi/spi_master/spi0/spi0.*/touchscreen/*    double_tap_pressed    0664    system    system
+/sys/devices/platform/soc/*/*.spi/spi_master/spi0/spi0.*/touchscreen/*    udfps_enabled         0664    system    system
+/sys/devices/platform/soc/*/*.spi/spi_master/spi0/spi0.*/touchscreen/*    udfps_pressed         0664    system    system
