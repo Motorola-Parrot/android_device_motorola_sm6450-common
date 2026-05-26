@@ -424,6 +424,15 @@ subsystem mem_buf_vm
 /sys/class/fts/touch_aoi aoi_set 0660 root system
 /sys/class/fts/touch_aoi power_set 0660 root system
 
+# Goodix fingerprint device
+/dev/goodix_fp            0660   system     system
+
+# EgisTech fingerprint device
+/dev/esfp0                0660   system     system
+
+# Anc fingerprint device
+/dev/jiiov_fp             0660   system     system
+
 #ImproveTouch device
 /dev/hbtp_input           0660   system     system
 /dev/hbtp_vm              0660   system     system
@@ -447,6 +456,19 @@ subsystem mem_buf_vm
 
 # This is temporary while using SD card for initial bring-up
 /dev/block/platform/soc/8804000.sdhci/by-name/frp       0600   system     system
+
+# Add device block for MISC
+/dev/block/platform/soc/7464900.sdhci/by-name/misc       0660   root     system
+/dev/block/platform/soc/624000.ufshc/by-name/misc        0660   root     system
+/dev/block/platform/soc/1da4000.ufshc/by-name/misc       0660   root     system
+/dev/block/platform/soc/c0c4000.sdhci/by-name/misc       0660   root     system
+/dev/block/platform/soc/1d84000.ufshc/by-name/misc       0660   root     system
+/dev/block/platform/soc/7c4000.sdhci/by-name/misc        0660   root     system
+/dev/block/platform/soc/4744000.sdhci/by-name/misc       0660   root     system
+/dev/block/platform/soc/4804000.ufshc/by-name/misc       0660   root     system
+
+# I2C
+/dev/i2c-*                0660   system     system
 
 # Kmsg device
 /dev/kmsg                                               0620   root       system
@@ -621,3 +643,9 @@ subsystem mem_buf_vm
 
 # IPA Events
 /dev/ipa_events         0660   radio      radio
+
+# fingerprint sysfs node permission
+/sys/class/fingerprint/fpc1020 dev_enable 0660 system system
+/sys/class/fingerprint/fpc1020 hw_reset   0660 system system
+/sys/class/fingerprint/fpc1020 irq        0660 system system
+/sys/class/fingerprint/fpc1020 irq_cnt    0660 system system

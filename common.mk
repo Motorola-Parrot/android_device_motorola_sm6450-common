@@ -60,11 +60,18 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom.vendor_ramdisk \
+    fstab.qcom.zram \
     init.qcom.recovery.rc \
     init.class_main.sh \
+    init.mmi.boot.sh \
+    init.mmi.touch.sh \
+    init.oem.hw.sh \
     init.qcom.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
+    init.mmi.rc \
+    init.mmi.charge_only.rc \
+    init.mmi.chipset.rc \
     init.qcom.rc \
     init.qcom.recovery.rc \
     init.qcom.usb.rc \

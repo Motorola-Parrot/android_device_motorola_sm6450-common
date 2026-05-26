@@ -11,8 +11,36 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
+    name: "fstab.qcom.zram",
+    src: "fstab.qcom.zram",
+    vendor: true,
+}
+
+prebuilt_etc {
     name: "init.qcom.rc",
     src: "init.qcom.rc",
+    sub_dir: "init/hw",
+    soc_specific: true,
+}
+
+
+prebuilt_etc {
+    name: "init.mmi.rc",
+    src: "init.mmi.rc",
+    sub_dir: "init/hw",
+    soc_specific: true,
+}
+
+prebuilt_etc {
+    name: "init.mmi.charge_only.rc",
+    src: "init.mmi.charge_only.rc",
+    sub_dir: "init/hw",
+    soc_specific: true,
+}
+
+prebuilt_etc {
+    name: "init.mmi.chipset.rc",
+    src: "init.mmi.chipset.rc",
     sub_dir: "init/hw",
     soc_specific: true,
 }
@@ -41,6 +69,24 @@ prebuilt_etc {
 sh_binary {
     name: "init.class_main.sh",
     src: "init.class_main.sh",
+    soc_specific: true,
+}
+
+sh_binary {
+    name: "init.mmi.boot.sh",
+    src: "init.mmi.boot.sh",
+    soc_specific: true,
+}
+
+sh_binary {
+    name: "init.mmi.touch.sh",
+    src: "init.mmi.touch.sh",
+    soc_specific: true,
+}
+
+sh_binary {
+    name: "init.oem.hw.sh",
+    src: "init.oem.hw.sh",
     soc_specific: true,
 }
 
