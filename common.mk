@@ -444,5 +444,16 @@ $(foreach variant,$(TARGET_WIFI_VARIANTS), \
         firmware_$(variant)_WCNSS_qcom_cfg.ini_symlink) \
 )
 
+
+# WiFi config files
+$(foreach variant,$(TARGET_WIFI_VARIANTS), \
+    $(eval PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/configs/wifi/$(variant)/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/$(variant)/WCNSS_qcom_cfg.ini) \
+)
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
+
 # Inherit from the proprietary files makefile.
 $(call inherit-product, vendor/motorola/sm6450-common/sm6450-common-vendor.mk)
