@@ -1,6 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from Motorola Moto G75 (paros) (16 W1UQ36H.73-28).
-## variant: RETBR
+## are from Motorola Moto G57 Power / Moto G100s (mumba) (16 W1WAAS36.48-12-23-3).
 
 # ADSP
 vendor/bin/adsprpcd
@@ -318,7 +317,9 @@ vendor/lib64/vendor.qti.hardware.dpmaidlservice-V1-ndk.so;MODULE_SUFFIX=_vendor
 
 # DSP
 vendor/bin/dspservice
+vendor/etc/init/vendor.qti.hardware.dsp-service.rc
 vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy
+vendor/etc/vintf/manifest/vendor.qti.hardware.dsp-service.xml
 vendor/lib64/vendor.qti.hardware.dsp-V1-ndk.so
 
 # DSP Modules
@@ -782,6 +783,7 @@ vendor/lib64/vendor.qti.hardware.qseecom-V1-ndk.so
 # QSPA
 system_ext/etc/init/qspa_system.rc
 system_ext/etc/qspa/qspa_default.rc
+vendor/etc/vintf/manifest/qspa/qspa-modem.xml
 
 # QSPM
 vendor/bin/vendor.qti.qspmhal-service
@@ -965,7 +967,7 @@ vendor/lib64/vendor.qti.hardware.radio.common-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.internal.deviceinfo-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.lpa-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.qcrilhook-V1-ndk.so
-vendor/lib64/vendor.qti.hardware.radio.qtiradio-V14-ndk.so
+vendor/lib64/vendor.qti.hardware.radio.qtiradio-V16-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.qtiradioconfig-V6-ndk.so
 vendor/lib64/vendor.qti.syshealthmon-V1-ndk.so
 
