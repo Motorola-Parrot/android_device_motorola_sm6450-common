@@ -223,6 +223,9 @@ PRODUCT_PACKAGES += \
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
 
+PRODUCT_COPY_FILES += \
+    kernel/motorola/sm6450/modules.systemdlkm_blocklist.msm.parrot:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/modules.blocklist.system_dlkm
+
 # Keymint
 PRODUCT_PACKAGES += \
     android.hardware.hardware_keystore_V3.xml
