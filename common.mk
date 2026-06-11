@@ -223,6 +223,9 @@ PRODUCT_PACKAGES += \
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/kernel/system_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
+
 # Keymint
 PRODUCT_PACKAGES += \
     android.hardware.hardware_keystore_V3.xml

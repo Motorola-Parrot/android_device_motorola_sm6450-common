@@ -4,7 +4,6 @@
 #
 
 COMMON_PATH := device/motorola/sm6450-common
-KERNEL_PATH := $(DEVICE_PATH)-kernel
 
 # A/B
 AB_OTA_PARTITIONS += \
@@ -52,9 +51,9 @@ BOARD_RAMDISK_USE_LZ4 := true
 
 # DTB / DTBO
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtbs/
-BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
+BOARD_USES_QCOM_MERGE_DTBS_SCRIPT := true
 TARGET_NEEDS_DTBOIMAGE := true
+TARGET_MERGE_DTBS_WILDCARD ?= parrot-moto-base*
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
@@ -69,46 +68,97 @@ BOARD_KERNEL_CMDLINE += \
     firmware_class.path=/vendor/firmware_mnt/image \
     androidboot.selinux=permissive
 
-BOARD_BOOTCONFIG := \
+BOARD_BOOTCONFIG += \
     androidboot.hardware=qcom \
     androidboot.hypervisor.protected_vm.supported=true \
-    androidboot.load_modules_parallel=true \
     androidboot.memcg=1 \
     androidboot.usbcontroller=a600000.dwc3 \
     androidboot.vendor.qspa=true \
     sysctl.kernel.firmware_config.force_sysfs_fallback=1
 
-BOARD_USES_GENERIC_KERNEL_IMAGE := true
-BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image
-
-# Prebuilt kernel
-BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
-BOARD_RAMDISK_OFFSET     := 0x02000000
-
-TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_BASE := 0x00000000
 TARGET_KERNEL_VERSION := 6.6
-TARGET_NO_KERNEL_OVERRIDE := true
+BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
-PRODUCT_COPY_FILES += \
-    $(KERNEL_PATH)/kernel:kernel
+TARGET_KERNEL_SOURCE := kernel/motorola/sm6450
+TARGET_KERNEL_CONFIG := \
+    gki_defconfig \
+    vendor/parrot_perf.config \
+    vendor/ext_config/moto-parrot.config \
+    vendor/ext_config/moto-parrot-$(PRODUCT_DEVICE).config
 
 # Kernel modules
-DLKM_MODULES_PATH := $(KERNEL_PATH)/vendor_dlkm
-RAMDISK_MODULES_PATH := $(KERNEL_PATH)/vendor_ramdisk
-SYSTEM_DLKM_MODULES_PATH := $(KERNEL_PATH)/system_dlkm
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(TARGET_KERNEL_SOURCE)/modules.vendor_blocklist.msm.parrot
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE)
 
-BOARD_SYSTEM_KERNEL_MODULES := $(wildcard $(SYSTEM_DLKM_MODULES_PATH)/*.ko)
-BOARD_SYSTEM_KERNEL_MODULES_LOAD := $(patsubst %,$(SYSTEM_DLKM_MODULES_PATH)/%,$(shell cat $(SYSTEM_DLKM_MODULES_PATH)/modules.load))
-BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(DLKM_MODULES_PATH)/*.ko)
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(patsubst %,$(DLKM_MODULES_PATH)/%,$(shell cat $(DLKM_MODULES_PATH)/modules.load))
-BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(DLKM_MODULES_PATH)/modules.blocklist
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/kernel/modules.load.vendor_dlkm))
 
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(RAMDISK_MODULES_PATH)/*.ko)
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(patsubst %,$(RAMDISK_MODULES_PATH)/%,$(shell cat $(RAMDISK_MODULES_PATH)/modules.load))
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD  := $(patsubst %,$(RAMDISK_MODULES_PATH)/%,$(shell cat $(RAMDISK_MODULES_PATH)/modules.load.recovery))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(RAMDISK_MODULES_PATH)/modules.blocklist
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/kernel/modules.load.vendor_boot))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/kernel/modules.load.recovery))
+
+BOOT_KERNEL_MODULES := $(strip $(shell cat $(COMMON_PATH)/kernel/modules.load.recovery $(COMMON_PATH)/kernel/modules.load.vendor_boot))
+SYSTEM_KERNEL_MODULES := $(strip $(shell cat $(COMMON_PATH)/kernel/system_dlkm.modules.load))
+
+TARGET_KERNEL_EXT_MODULE_ROOT := kernel/motorola/sm6450-modules
+TARGET_KERNEL_EXT_MODULES := \
+    qcom/opensource/mmrm-driver \
+    qcom/opensource/mm-drivers/msm_ext_display \
+    qcom/opensource/mm-drivers/sync_fence \
+    qcom/opensource/audio-kernel \
+    qcom/opensource/securemsm-kernel \
+    qcom/opensource/synx-kernel \
+    qcom/opensource/camera-kernel \
+    qcom/opensource/data-kernel/drivers/smem-mailbox \
+    qcom/opensource/datarmnet-ext/mem \
+    qcom/opensource/dataipa/drivers/platform/msm \
+    qcom/opensource/datarmnet/core \
+    qcom/opensource/datarmnet-ext/aps \
+    qcom/opensource/datarmnet-ext/offload \
+    qcom/opensource/datarmnet-ext/perf \
+    qcom/opensource/datarmnet-ext/perf_tether \
+    qcom/opensource/datarmnet-ext/sch \
+    qcom/opensource/datarmnet-ext/shs \
+    qcom/opensource/datarmnet-ext/wlan \
+    qcom/opensource/display-drivers/msm \
+    qcom/opensource/dsp-kernel \
+    qcom/opensource/graphics-kernel \
+    qcom/opensource/spu-kernel \
+    qcom/opensource/touch-drivers \
+    qcom/opensource/video-driver \
+    qcom/opensource/wlan/platform \
+    qcom/opensource/wlan/qcacld-3.0/.adrastea \
+    qcom/opensource/wlan/qcacld-3.0/.qca6490 \
+    qcom/opensource/wlan/qcacld-3.0/.qca6750 \
+    qcom/opensource/bt-kernel \
+    nxp/opensource/driver
+
+TARGET_KERNEL_EXT_MODULES += \
+    motorola/drivers/mmi_annotate \
+    motorola/drivers/mmi_info \
+    motorola/drivers/power/bm_adsp_ulog \
+    motorola/drivers/power/mmi_charger \
+    motorola/drivers/power/qti_glink_charger \
+    motorola/drivers/power/qpnp_adaptive_charge \
+    motorola/drivers/misc/utag \
+    motorola/drivers/mmi_relay \
+    motorola/drivers/misc/mmi_sys_temp \
+    motorola/drivers/sensors \
+    motorola/drivers/backlight/aw99703 \
+    motorola/drivers/backlight/ktd3136 \
+    motorola/drivers/misc/awinic/sarsensor \
+    motorola/drivers/misc/sx937x \
+    motorola/drivers/misc/stk501xx \
+    motorola/drivers/input/touchscreen/touchscreen_mmi \
+    motorola/drivers/input/touchscreen/focaltech_0flash_v2_mmi \
+    motorola/drivers/input/touchscreen/goodix_berlin_mmi \
+    motorola/drivers/input/touchscreen/ili9882_mmi \
+    motorola/drivers/input/misc/fpc_fps_mmi \
+    motorola/drivers/input/misc/goodix_fod_mmi \
+    motorola/drivers/wlan_antenna \
+    motorola/drivers/regulator/dio8015 \
+    motorola/drivers/regulator/wl2866d
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true

@@ -1,5 +1,17 @@
 [
   {
+    "repository": "android_kernel_motorola_sm6450",
+    "target_path": "kernel/motorola/sm6450"
+  },
+  {
+    "repository": "android_kernel_motorola_sm6450-modules",
+    "target_path": "kernel/motorola/sm6450-modules"
+  },
+  {
+    "repository": "android_kernel_motorola_sm6450-devicetrees",
+    "target_path": "kernel/motorola/sm6450-devicetrees"
+  },
+  {
     "repository": "android_hardware_motorola",
     "target_path": "hardware/motorola"
   },
