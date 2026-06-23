@@ -97,6 +97,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk_prebuilt.so'),
     'vendor/lib64/android.hardware.bluetooth.audio-impl_prebuilt.so': blob_fixup()
         .replace_needed('libbluetooth_audio_session_aidl.so', 'libbluetooth_audio_session_aidl_prebuilt.so'),
+    'vendor/lib64/libperfgluelayer.so': blob_fixup()
+        .sig_replace('87 08 00 94', '1F 20 03 D5'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
