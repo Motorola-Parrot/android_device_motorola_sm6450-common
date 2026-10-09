@@ -64,6 +64,7 @@ BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 # Kernel
 BOARD_KERNEL_CMDLINE += \
     printk.devkmsg=on \
+    scsi_mod.scan=sync \
     firmware_class.path=/vendor/firmware_mnt/image \
     androidboot.selinux=permissive
 
