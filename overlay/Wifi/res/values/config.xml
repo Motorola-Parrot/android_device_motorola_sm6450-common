@@ -17,7 +17,7 @@
     <bool name="config_wifi_background_scan_support">true</bool>
 
     <!-- Integer indicating maximum hardware supported client number of soft ap -->
-    <integer name="config_wifiHardwareSoftapMaxClientCount">32</integer>
+    <integer name="config_wifiHardwareSoftapMaxClientCount">10</integer>
 
     <!-- List of allowed channels in 2GHz band for softap. If the device doesn't want to restrict
          channels this should be empty. Values is a comma separated channel string and/or channel
