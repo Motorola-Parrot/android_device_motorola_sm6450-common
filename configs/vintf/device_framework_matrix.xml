@@ -1,0 +1,18 @@
+<compatibility-matrix version="1.0" type="framework">
+    <hal format="aidl">
+        <name>android.hardware.biometrics.fingerprint</name>
+        <version>3</version>
+        <interface>
+            <name>IFingerprint</name>
+            <instance>wrapper</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
+        <name>com.motorola.hardware.biometric.fingerprint</name>
+        <version>2</version>
+        <interface>
+            <name>IMotoFingerPrint</name>
+            <instance>wrapper</instance>
+        </interface>
+    </hal>
+</compatibility-matrix>
