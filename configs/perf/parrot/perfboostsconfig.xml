@@ -161,12 +161,14 @@
                        0x40800000, 0xFFFF, 0x40800100, 0xFFFF,
                        0x4280C000, 734" />
 
-    <!-- Expensive rendering hint -->
-        <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode,value -->
-        <!-- GPU_MIN_POWER_LEVELresource opcode,value -->
+    <!-- Expensive Rendering -->
+        <!-- GPU - min clock 500 MHz -->
         <Config
-                Id="0x000010A5" Enable="false" Timeout="5000" Fps="60"
-                Resources="0x40800100, 0xFFF, 0x42804000, 0" />
+            Id="0x000010A5" Enable="true" Timeout="0" Target="parrot"
+            Resources="0x4280C000, 500" />
+        <Config
+            Id="0x000010A5" Enable="true" Timeout="0" Target="ravelin"
+            Resources="0x4280C000, 500" />
 
     <!--Exit app Animation boost -->
         <!-- CPUBOOST_MIN_FREQ BIG Core resource opcode, value-->
