@@ -326,9 +326,12 @@ PRODUCT_PACKAGES += \
     vendor_super_modem_mountpoint
 
 # Perf
+TARGET_PERF_VARIANT ?= parrot
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/profiles/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json \
-    $(LOCAL_PATH)/configs/perf/perfconfigstore.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfconfigstore.xml
+    $(LOCAL_PATH)/configs/perf/perfconfigstore.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfconfigstore.xml \
+    $(LOCAL_PATH)/configs/perf/$(TARGET_PERF_VARIANT)/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfboostsconfig.xml
 
 # Power
 PRODUCT_PACKAGES += \
