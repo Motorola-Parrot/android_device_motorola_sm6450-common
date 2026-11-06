@@ -89,15 +89,25 @@ TARGET_KERNEL_CONFIG := \
     vendor/ext_config/moto-parrot-$(PRODUCT_DEVICE).config
 
 # Kernel modules
-BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(TARGET_KERNEL_SOURCE)/modules.vendor_blocklist.msm.parrot
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE)
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE += \
+    $(TARGET_KERNEL_SOURCE)/modules.vendor_blocklist.msm.parrot \
+    $(DEVICE_PATH)/kernel/modules.blocklist
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE += $(BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE)
 
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/kernel/modules.load.vendor_dlkm))
+BOARD_VENDOR_KERNEL_MODULES_LOAD := \
+    $(strip $(shell cat \
+        $(COMMON_PATH)/kernel/modules.load.vendor_dlkm \
+       	$(DEVICE_PATH)/kernel/modules.load.vendor_dlkm))
 
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/kernel/modules.load.vendor_boot))
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)/kernel/modules.load.recovery))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := \
+    $(strip $(shell cat \
+       	$(COMMON_PATH)/kernel/modules.load.recovery \
+       	$(DEVICE_PATH)/kernel/modules.load.recovery))
 
-BOOT_KERNEL_MODULES := $(strip $(shell cat $(COMMON_PATH)/kernel/modules.load.recovery $(COMMON_PATH)/kernel/modules.load.vendor_boot))
+BOOT_KERNEL_MODULES += \
+    $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD) \
+    $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD)
 SYSTEM_KERNEL_MODULES := $(strip $(shell cat $(COMMON_PATH)/kernel/system_dlkm.modules.load))
 
 TARGET_KERNEL_EXT_MODULE_ROOT := kernel/motorola/sm6450-modules
