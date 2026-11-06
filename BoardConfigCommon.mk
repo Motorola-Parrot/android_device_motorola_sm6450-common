@@ -160,14 +160,20 @@ TARGET_KERNEL_EXT_MODULES += \
     motorola/drivers/misc/sx937x \
     motorola/drivers/misc/stk501xx \
     motorola/drivers/input/touchscreen/touchscreen_mmi \
+    motorola/drivers/input/touchscreen/chipone_tddi_v3_mmi \
     motorola/drivers/input/touchscreen/focaltech_0flash_v2_mmi \
     motorola/drivers/input/touchscreen/goodix_berlin_mmi \
     motorola/drivers/input/touchscreen/ili9882_mmi \
+    motorola/drivers/input/touchscreen/ilitek_v4_mmi \
+    motorola/drivers/input/misc/anc_fps_mmi \
     motorola/drivers/input/misc/fpc_fps_mmi \
     motorola/drivers/input/misc/goodix_fod_mmi \
     motorola/drivers/wlan_antenna \
     motorola/drivers/regulator/dio8015 \
-    motorola/drivers/regulator/wl2866d
+    motorola/drivers/regulator/wl2866d \
+    motorola/drivers/fm \
+    motorola/drivers/nfc/st21nfc \
+    motorola/drivers/ese/st54x
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
