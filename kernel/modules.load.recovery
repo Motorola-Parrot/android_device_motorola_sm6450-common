@@ -252,9 +252,6 @@ sensors_class.ko
 mmi_relay.ko
 mmi_annotate.ko
 mmi_info.ko
-touchscreen_mmi.ko
-focaltech_0flash_v2_mmi.ko
-ili9882_mmi.ko
 snd_event_dlkm.ko
 q6_pdr_dlkm.ko
 q6_notifier_dlkm.ko
