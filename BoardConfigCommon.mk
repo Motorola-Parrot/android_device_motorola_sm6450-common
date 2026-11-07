@@ -141,7 +141,8 @@ TARGET_KERNEL_EXT_MODULES := \
     qcom/opensource/wlan/qcacld-3.0/.qca6490 \
     qcom/opensource/wlan/qcacld-3.0/.qca6750 \
     qcom/opensource/bt-kernel \
-    nxp/opensource/driver
+    nxp/opensource/driver \
+    st/opensource/driver
 
 TARGET_KERNEL_EXT_MODULES += \
     motorola/drivers/mmi_annotate \
@@ -162,6 +163,7 @@ TARGET_KERNEL_EXT_MODULES += \
     motorola/drivers/input/touchscreen/touchscreen_mmi \
     motorola/drivers/input/touchscreen/chipone_tddi_v3_mmi \
     motorola/drivers/input/touchscreen/focaltech_0flash_v2_mmi \
+    motorola/drivers/input/touchscreen/focaltech_touch_v3_4 \
     motorola/drivers/input/touchscreen/goodix_berlin_mmi \
     motorola/drivers/input/touchscreen/ili9882_mmi \
     motorola/drivers/input/touchscreen/ilitek_v4_mmi \
