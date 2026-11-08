@@ -12,7 +12,15 @@ Fingerprint::Fingerprint(std::shared_ptr<IFingerprint> stock)
     : mService(std::move(stock)), mController(std::make_shared<PanelController>()) {}
 
 ndk::ScopedAStatus Fingerprint::getSensorProps(std::vector<SensorProps>* out) {
-    return mService->getSensorProps(out);
+    auto ret = mService->getSensorProps(out);
+    if (ret.isOk()) {
+        // The stock HAL reports halHandlesDisplayTouches=true, which makes the framework drop
+        // onPointerDown/Up. We need those to drive the panel HBM.
+        for (auto& props : *out) {
+            props.halHandlesDisplayTouches = false;
+        }
+    }
+    return ret;
 }
 
 ndk::ScopedAStatus Fingerprint::createSession(int32_t sensorId, int32_t userId,
