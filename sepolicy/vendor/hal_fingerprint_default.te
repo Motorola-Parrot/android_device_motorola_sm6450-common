@@ -1,2 +1,5 @@
 # Wrapper looks up the stock HAL instance
 hal_client_domain(hal_fingerprint_default, hal_fingerprint)
+
+# Wrapper sets the panel HBM through /dev/dri/card0
+allow hal_fingerprint_default graphics_device:chr_file rw_file_perms;
