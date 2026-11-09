@@ -1,0 +1,7 @@
+# Hexagon DSP
+/vendor/lib/rfsa/adsp/libarc_htp_driver_skel\.so                       u:object_r:same_process_hal_file:s0
+/vendor/lib/rfsa/adsp/libQnnHtpV7[39]Skel\.so                          u:object_r:same_process_hal_file:s0
+/vendor/lib/rfsa/adsp/libQnnHtpV7[359]\.so                             u:object_r:same_process_hal_file:s0
+
+# NFC
+/(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element-service\.thales u:object_r:hal_secure_element_default_exec:s0
