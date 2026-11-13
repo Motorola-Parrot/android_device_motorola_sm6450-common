@@ -41,5 +41,12 @@ ro.lmk.thrashing_limit_decay=25
 ro.lmk.psi_complete_stall_ms=250
 ro.lmk.psi_partial_stall_ms=50
 
+# ZRAM
+mmd.zram.enabled=true
+mmd.zram.size=100%
+mmd.zram.comp_algorithm=lzo-rle
+mm.zram.maintenance.first_delay_seconds=86400
+mm.zram.maintenance.periodic_delay_seconds=86400
+
 # Media
 media.stagefright.audio.deep=false
