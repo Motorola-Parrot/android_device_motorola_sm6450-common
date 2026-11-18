@@ -30,6 +30,7 @@ ndk::ScopedAStatus SessionCallback::onError(Error error, int32_t vendorCode) {
 
 ndk::ScopedAStatus SessionCallback::onEnrollmentProgress(int32_t enrollmentId,
                                                          int32_t remaining) {
+    mController->disableHighBrightFod();
     return mCb->onEnrollmentProgress(enrollmentId, remaining);
 }
 
@@ -59,6 +60,7 @@ ndk::ScopedAStatus SessionCallback::onLockoutCleared() {
 }
 
 ndk::ScopedAStatus SessionCallback::onInteractionDetected() {
+    mController->disableHighBrightFod();
     return mCb->onInteractionDetected();
 }
 
